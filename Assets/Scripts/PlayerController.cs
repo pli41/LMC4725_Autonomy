@@ -97,6 +97,7 @@ public class PlayerController : MonoBehaviour {
 				{
 					GameController.instance.DisplayAchievement2(achievement);
 				}
+				achievements.Remove (achievement);
 				break;
 			}
 		}
@@ -119,15 +120,15 @@ public class PlayerController : MonoBehaviour {
 		HitBallAchievement.progress = HitBallAchievementProgress;
 		achievements.Add(HitBallAchievement);
 		
-		Achievement HoldUpAchievement = new Achievement("Held up for 10 seconds", "Wow! You are a button holding expert.");
+		Achievement HoldUpAchievement = new Achievement("Held up for 2 seconds", "Wow! You are a button holding expert.");
 		HoldUpAchievement.progress = HoldUpAchievementProgress;
 		achievements.Add(HoldUpAchievement);
 
-		Achievement WallHitAchievement = new Achievement("Hit the wall 30 times", "You're bouncing off the walls!");
+		Achievement WallHitAchievement = new Achievement("Hit the wall 5 times", "You're bouncing off the walls!");
 		WallHitAchievement.progress = WallHitAchievementProgress;
 		achievements.Add(WallHitAchievement);
 
-		Achievement MoverAchievement = new Achievement("You moved 500 paddle miles", "You could be a professional endurance paddle mover.");
+		Achievement MoverAchievement = new Achievement("You moved 100 paddle miles", "You could be a professional endurance paddle mover.");
 		MoverAchievement.progress = MoverAchievementProgress;
 		achievements.Add(MoverAchievement);
 
@@ -143,17 +144,17 @@ public class PlayerController : MonoBehaviour {
 	
 	public float HoldUpAchievementProgress()
 	{
-		return (statistics.GetHoldUpDuration() / 10f);
+		return (statistics.GetHoldUpDuration() / 2f);
 	}
 
 	public float WallHitAchievementProgress()
 	{
-		return (((statistics.GetHitBottomWallCount())+(statistics.GetHitTopWallCount())) / 30f);
+		return (((statistics.GetHitBottomWallCount())+(statistics.GetHitTopWallCount())) / 5);
 	}
 
 	public float MoverAchievementProgress()
 	{	
-		return (statistics.GetMoveAmount() / 500f);
+		return (statistics.GetMoveAmount() / 100);
 	}
 
 	public float ThreePointerAchievementProgress()

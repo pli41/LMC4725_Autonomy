@@ -30,8 +30,9 @@ public class GameController : MonoBehaviour {
 
 		initialNewBallDuration = newBallDuration;
 		windowRect = new Rect (330, 150, 300, 200);
-		achieveRectP1 = new Rect (10, 410, 175, 80);
-		achieveRectP2 = new Rect (775, 410, 175, 80);
+		//(10, 410, 175, 80), (775, 410, 175, 80)
+		achieveRectP1 = new Rect (40, 150, 300, 200);
+		achieveRectP2 = new Rect (600, 150, 300, 200);
 		start = false;
 		winner = 0;
 		balls = new ArrayList ();
@@ -76,25 +77,23 @@ public class GameController : MonoBehaviour {
 
 	void OnGUI(){
 		if (winner == 0 && !start) {
-			GUI.Window(0, windowRect, DoMyWindow, "Pong Pong");
-			if (displayAchievement1)
-			{
-				GUI.Window (2, achieveRectP1, AchieveWindowP1, achievement1.name);
-			}
-
-			if (displayAchievement2)
-			{
-				GUI.Window (2, achieveRectP2, AchieveWindowP2, achievement2.name);
-			}
-		}
-		else if (winner != 0 && !start){
-			if(winner == 1){
+			GUI.Window (0, windowRect, DoMyWindow, "Pong Pong");
+		} else if (winner != 0 && !start) {
+			if (winner == 1) {
 				GUI.color = Color.blue;
-			}
-			else{
+			} else {
 				GUI.color = Color.red;
 			}
-			GUI.Window(1, windowRect, WinWindow, "Pong Pong");
+			GUI.Window (1, windowRect, WinWindow, "Pong Pong");
+		} else {
+			Debug.Log("running");
+			if (displayAchievement1) {	
+				GUI.Window (2, achieveRectP1, AchieveWindowP1, achievement1.name);
+			}
+			//achievement1.name
+			if (displayAchievement2) {
+				GUI.Window (3, achieveRectP2, AchieveWindowP2, achievement2.name);
+			}
 		}
 	}
 
@@ -124,6 +123,7 @@ public class GameController : MonoBehaviour {
 
 	void AchieveWindowP1(int windowID) {
 		GUI.Label (new Rect (10, 20, 140, 80), achievement1.description + "\n" + achievement1.value + " Points");
+		//chievement1.description + "\n" + achievement1.value + " Points"
 	}
 
 	void AchieveWindowP2(int windowID) {
@@ -133,21 +133,23 @@ public class GameController : MonoBehaviour {
 	public void DisplayAchievement1(Achievement achievement1)
 	{
 		this.achievement1 = achievement1;
+		Debug.Log (achievement1.description);
 		StartCoroutine(DisplayAchievement1ForFiveSeconds());
 	}
 
 	public void DisplayAchievement2(Achievement achievement2)
 	{
 		this.achievement2 = achievement2;
+		Debug.Log (achievement2.description);;
 		StartCoroutine(DisplayAchievement2ForFiveSeconds());
 	}
 
 	IEnumerator DisplayAchievement1ForFiveSeconds()
 	{
 		Timer timer = new Timer(5f);
-		displayAchievement1 = true;
 		while (timer.Percent() < 1f)
 		{
+			displayAchievement1 = true;
 			yield return 0;
 		}
 		
@@ -157,9 +159,9 @@ public class GameController : MonoBehaviour {
 	IEnumerator DisplayAchievement2ForFiveSeconds()
 	{
 		Timer timer = new Timer(5f);
-		displayAchievement2 = true;
 		while (timer.Percent() < 1f)
 		{
+			displayAchievement2 = true;
 			yield return 0;
 		}
 		
