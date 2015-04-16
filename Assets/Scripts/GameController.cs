@@ -20,6 +20,9 @@ public class GameController : MonoBehaviour {
 	private Rect achieveRectP2;
 	public PlayerController player1, player2;
 
+	public bool displayAchievement1, displayAchievement2;
+	public Achievement achievement1, achievement2;
+
 
 	// Use this for initialization
 	void Start () {
@@ -74,8 +77,15 @@ public class GameController : MonoBehaviour {
 	void OnGUI(){
 		if (winner == 0 && !start) {
 			GUI.Window(0, windowRect, DoMyWindow, "Pong Pong");
-			GUI.Window (2, achieveRectP1, AchieveWindowP1, "Achievement");
-			GUI.Window (3, achieveRectP2, AchieveWindowP2, "Achievement");
+			if (displayAchievement1)
+			{
+				GUI.Window (2, achieveRectP1, AchieveWindowP1, achievement1.name);
+			}
+
+			if (displayAchievement2)
+			{
+				GUI.Window (2, achieveRectP2, AchieveWindowP2, achievement2.name);
+			}
 		}
 		else if (winner != 0 && !start){
 			if(winner == 1){
@@ -113,14 +123,49 @@ public class GameController : MonoBehaviour {
 	}
 
 	void AchieveWindowP1(int windowID) {
-		GUI.Label (new Rect (10, 20, 140, 80), "This is an achievement\n500 Points");
-		
+		GUI.Label (new Rect (10, 20, 140, 80), achievement1.description + "\n" + achievement1.value + " Points");
 	}
 
 	void AchieveWindowP2(int windowID) {
-		GUI.Label (new Rect (10, 20, 140, 80), "This is an achievement\n500 Points");
-		
+		GUI.Label (new Rect (10, 20, 140, 80), achievement2.description + "\n" + achievement2.value + " Points");
 	}
+
+	public void DisplayAchievement1(Achievement achievement1)
+	{
+		this.achievement1 = achievement1;
+		StartCoroutine(DisplayAchievement1ForFiveSeconds());
+	}
+
+	public void DisplayAchievement2(Achievement achievement2)
+	{
+		this.achievement2 = achievement2;
+		StartCoroutine(DisplayAchievement2ForFiveSeconds());
+	}
+
+	IEnumerator DisplayAchievement1ForFiveSeconds()
+	{
+		Timer timer = new Timer(5f);
+		displayAchievement1 = true;
+		while (timer.Percent() < 1f)
+		{
+			yield return 0;
+		}
+		
+		displayAchievement1 = false;
+	}
+
+	IEnumerator DisplayAchievement2ForFiveSeconds()
+	{
+		Timer timer = new Timer(5f);
+		displayAchievement2 = true;
+		while (timer.Percent() < 1f)
+		{
+			yield return 0;
+		}
+		
+		displayAchievement2 = false;
+	}
+
 
 	void reset(){
 		foreach (GameObject ball in balls){
