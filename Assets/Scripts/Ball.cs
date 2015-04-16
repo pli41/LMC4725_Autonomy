@@ -5,8 +5,8 @@ public class Ball : MonoBehaviour {
 
 	private GameController gameController;
 	public float speed = 3.5f;
-	private LeftGoal lGoal;
-	private RightGoal rGoal;
+	//private LeftGoal lGoal;
+	//private RightGoal rGoal;
 	public GameObject lightningEffect;
 	private Vector2 initialPos;
 	private Quaternion initialRot;
@@ -19,8 +19,6 @@ public class Ball : MonoBehaviour {
 		gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 		gameCtrl = gameController.GetComponent<GameController> ();
 		GetComponent<Rigidbody2D>().velocity = randomSpeed () * speed;
-		lGoal = GameObject.FindGameObjectWithTag ("LeftGoal").GetComponent<LeftGoal> ();
-		rGoal = GameObject.FindGameObjectWithTag ("RightGoal").GetComponent<RightGoal> ();
 		//lightningEffect.particleSystem.Pause();
 		initialPos = transform.position;
 		initialRot = transform.rotation;
@@ -68,38 +66,25 @@ public class Ball : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col){
-		if (col.gameObject.tag == "Player1") {
+		PlayerController player = col.gameObject.GetComponent<PlayerController> ();
+		if (player != null)
+		{
 			// Calculate hit Factor
 			float y = hitFactor(transform.position,
 			                    col.transform.position,
 			                    col.collider.bounds.size.y);
 			
 			// Calculate direction, make length=1 via .normalized
-			Vector2 dir = new Vector2(1, y).normalized;
-			PlayerController1 player1 = col.gameObject.GetComponent<PlayerController1> ();
-			if(player1.onFire){
-				GetComponent<Rigidbody2D>().velocity = dir * 8;
-				onFire = true;
+			Vector2 dir = Vector2.zero;
+			if (player.playerNum == 1) 
+			{
+				dir = new Vector2(1, y).normalized;
+			} 
+			else
+			{
+				dir = new Vector2(-1, y).normalized;
 			}
-			else{
-				GetComponent<Rigidbody2D>().velocity = dir * speed;
-			}
-
-			// Set Velocity with dir * speed
-			GetComponent<AudioSource>().Play();
-		}
-		
-		// Hit the right Racket?
-		if (col.gameObject.tag == "Player2") {
-			// Calculate hit Factor
-			float y = hitFactor(transform.position,
-			                    col.transform.position,
-			                    col.collider.bounds.size.y);
-			
-			// Calculate direction, make length=1 via .normalized
-			Vector2 dir = new Vector2(-1, y).normalized;
-			PlayerController2 player2 = col.gameObject.GetComponent<PlayerController2> ();
-			if(player2.onFire){
+			if(player.onFire){
 				GetComponent<Rigidbody2D>().velocity = dir * 8;
 				onFire = true;
 			}
@@ -114,16 +99,17 @@ public class Ball : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col){
 		if(col.gameObject.tag == "LeftGoal"){
-			lGoal.currentScore ++;
+			gameCtrl.player2.ScorePoint();
 			Destroy(gameObject);
 			gameCtrl.count--;
 		}
 
 		if(col.gameObject.tag == "RightGoal"){
-			rGoal.currentScore ++;
+			gameCtrl.player1.ScorePoint();
 			Destroy(gameObject);
 			gameCtrl.count--;
 		}
+
 		if (col.gameObject.tag == "LightningGate") {
 			lightningEffect.GetComponent<ParticleSystem>().Play();
 		}

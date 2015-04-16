@@ -2,27 +2,27 @@
 using System.Collections;
 
 public class GameController : MonoBehaviour {
-
+	public static GameController instance;
 	public GameObject ball;
+	public float newBallDuration;
+	private float initialNewBallDuration;
+
 	public int count;
 	private float timer;
-	public float newBallDuration;
 	//1 for player1 winning, 2 for player2 winning
 	public int winner;
 	public bool start;
-	private float initialNewBallDuration;
-	private int player1score;
-	private int player2score;
+
+	
 	private ArrayList balls;
 	private Rect windowRect;
-	private PlayerController1 player1;
-	private PlayerController2 player2;
-	private LeftGoal LGoal;
-	private RightGoal RGoal;
+	public PlayerController player1, player2;
 
 
 	// Use this for initialization
 	void Start () {
+		instance = this;
+
 		initialNewBallDuration = newBallDuration;
 		windowRect = new Rect (350, 150, 300, 200);
 		start = false;
@@ -30,20 +30,12 @@ public class GameController : MonoBehaviour {
 		balls = new ArrayList ();
 		count = 0;
 		timer = 0;
-		player1 = GameObject.FindGameObjectWithTag ("Player1").GetComponent <PlayerController1> ();
-		player2 = GameObject.FindGameObjectWithTag ("Player2").GetComponent <PlayerController2> ();
-		LGoal = GameObject.FindGameObjectWithTag ("LeftGoal").GetComponent<LeftGoal> ();
-		RGoal = GameObject.FindGameObjectWithTag ("RightGoal").GetComponent<RightGoal> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		Debug.Log (start);
-		if (start){
-			player2score = player2.currentScore;
-			player1score = player1.currentScore;
-			
-			
+		if (start){			
 			
 			timer += Time.deltaTime/2;
 			if(timer >= newBallDuration){
@@ -53,12 +45,12 @@ public class GameController : MonoBehaviour {
 				createBall();
 				timer = 0;
 			}
-			if(player1score >= 30){
+			if(player1.currentScore >= 30){
 				winner = 1;
 				start = false;
 			}
 			
-			if(player2score >= 30){
+			if(player2.currentScore >= 30){
 				winner = 2;
 				start = false;
 			}
@@ -118,8 +110,6 @@ public class GameController : MonoBehaviour {
 		foreach (GameObject ball in balls){
 			Destroy(ball);
 		}
-		LGoal.currentScore = 0;
-		RGoal.currentScore = 0;
 		player1.Reset ();
 		player2.Reset ();
 		winner = 0;
