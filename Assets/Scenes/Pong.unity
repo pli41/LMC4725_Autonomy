@@ -674,6 +674,7 @@ MonoBehaviour:
   fire: {fileID: 1894409133}
   onFire: 0
   currentScore: 0
+  scoreText: {fileID: 1978928571}
   upKey: 119
   downKey: 115
   statistics: {fileID: 269548234}
@@ -748,6 +749,8 @@ MonoBehaviour:
   moveDownAmount: 0
   holdUpDuration: 0
   holdDownDuration: 0
+  maxHoldUpDuration: 0
+  maxHoldDownDuration: 0
 --- !u!1 &296185080
 GameObject:
   m_ObjectHideFlags: 0
@@ -4336,7 +4339,6 @@ GameObject:
   - 33: {fileID: 1321281261}
   - 23: {fileID: 1321281259}
   - 61: {fileID: 1321281260}
-  - 114: {fileID: 1321281262}
   m_Layer: 0
   m_Name: RightBorder
   m_TagString: RightGoal
@@ -4394,18 +4396,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1321281257}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1321281262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1321281257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dd02ee1fbddd47e582be818c1763401, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentScore: 0
 --- !u!1 &1355695336
 GameObject:
   m_ObjectHideFlags: 0
@@ -6545,7 +6535,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1426527435}
   - 132: {fileID: 1426527437}
-  - 114: {fileID: 1426527436}
   m_Layer: 5
   m_Name: RightScore
   m_TagString: RightScore
@@ -6565,19 +6554,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 124497947}
   m_RootOrder: 1
---- !u!114 &1426527436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1426527434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21038e49f2760453d9c6428800b9ad92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentScore: 0
-  LGoal: {fileID: 0}
 --- !u!132 &1426527437
 GUIText:
   m_ObjectHideFlags: 0
@@ -7301,6 +7277,7 @@ MonoBehaviour:
   fire: {fileID: 1931125335}
   onFire: 0
   currentScore: 0
+  scoreText: {fileID: 1426527437}
   upKey: 273
   downKey: 274
   statistics: {fileID: 1864795462}
@@ -7324,6 +7301,8 @@ MonoBehaviour:
   moveDownAmount: 0
   holdUpDuration: 0
   holdDownDuration: 0
+  maxHoldUpDuration: 0
+  maxHoldDownDuration: 0
 --- !u!1 &1894409133
 GameObject:
   m_ObjectHideFlags: 0
@@ -8347,7 +8326,6 @@ GameObject:
   - 33: {fileID: 1927612411}
   - 23: {fileID: 1927612409}
   - 61: {fileID: 1927612410}
-  - 114: {fileID: 1927612412}
   m_Layer: 0
   m_Name: LeftBorder
   m_TagString: LeftGoal
@@ -8405,18 +8383,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1927612407}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1927612412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1927612407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ebfd7c5dcd0f4ed99cbb08a788d55e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentScore: 0
 --- !u!1 &1931125335
 GameObject:
   m_ObjectHideFlags: 0
@@ -9438,7 +9404,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1978928569}
   - 132: {fileID: 1978928571}
-  - 114: {fileID: 1978928570}
   m_Layer: 5
   m_Name: LeftScore
   m_TagString: LeftScore
@@ -9458,19 +9423,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 124497947}
   m_RootOrder: 0
---- !u!114 &1978928570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1978928568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e5387975bbfe42659e16b2dd8c2ce4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentScore: 0
-  RGoal: {fileID: 0}
 --- !u!132 &1978928571
 GUIText:
   m_ObjectHideFlags: 0

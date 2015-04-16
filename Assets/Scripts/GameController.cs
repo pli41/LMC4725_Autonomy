@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (start);
+		//Debug.Log (start);
 		if (start){			
 			
 			timer += Time.deltaTime/2;

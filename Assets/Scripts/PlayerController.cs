@@ -9,9 +9,10 @@ public class PlayerController : MonoBehaviour {
 	public bool onFire;
 
 	public int currentScore;
-	private GUIText scoreText;
+	public GUIText scoreText;
 
 	public KeyCode upKey, downKey;
+	private bool CanHitTopWall, CanHitBottomWall;
 
 	public Statistics statistics;
 
@@ -41,8 +42,17 @@ public class PlayerController : MonoBehaviour {
 
 				statistics.moveUpAmount += 0.3f;
 			}
+			else
+			{
+				if (CanHitTopWall)
+				{
+					statistics.hitTopWallCount++;
+					CanHitTopWall = false;
+				}
+			}
 
 			statistics.holdDownDuration += Time.deltaTime;
+			CanHitBottomWall = true;
 		} else {
 			statistics.holdDownDuration = 0f;
 		}
@@ -55,8 +65,17 @@ public class PlayerController : MonoBehaviour {
 
 				statistics.moveDownAmount += 0.3f;
 			}
+			else
+			{
+				if (CanHitBottomWall)
+				{
+					statistics.hitBottomWallCount++;
+					CanHitBottomWall = false;
+				}
+			}
 
 			statistics.holdUpDuration += Time.deltaTime;
+			CanHitTopWall = true;
 		} else {
 			statistics.holdUpDuration = 0f;
 		}

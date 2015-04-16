@@ -55,7 +55,7 @@ public class Ball : MonoBehaviour {
 		else{
 			newSpeedV = new Vector2(1, 1);
 		}
-		Debug.Log (newSpeedV.normalized);
+		//Debug.Log (newSpeedV.normalized);
 		return newSpeedV.normalized;
 	}
 

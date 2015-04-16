@@ -4,7 +4,7 @@ using System.Collections;
 public class Statistics : MonoBehaviour {
 	public PlayerController player;
 	public int hitBallCount;
-	public int hitLeftWallCount, hitRightWallCount;
+	public int hitTopWallCount, hitBottomWallCount;
 	public float moveAmount, moveUpAmount, moveDownAmount;
 	public float holdUpDuration, holdDownDuration;
 	public float maxHoldUpDuration, maxHoldDownDuration;
@@ -61,5 +61,15 @@ public class Statistics : MonoBehaviour {
 	public float GetHoldDownDuration()
 	{
 		return holdDownDuration;
+	}
+
+	public float GetHitBottomWallCount()
+	{
+		return hitBottomWallCount;
+	}
+
+	public float GetHitTopWallCount()
+	{
+		return hitTopWallCount;
 	}
 }
