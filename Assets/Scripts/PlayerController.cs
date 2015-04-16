@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour {
 	public int playerNum;
@@ -15,10 +16,14 @@ public class PlayerController : MonoBehaviour {
 	private bool CanHitTopWall, CanHitBottomWall;
 
 	public Statistics statistics;
+	public List<Achievement> achievements = new List<Achievement>();
+
+	public float progress;
 
 	// Use this for initialization
 	void Start () {
 		Reset();
+		CreateAchievements();
 	}
 	
 	// Update is called once per frame
@@ -79,6 +84,8 @@ public class PlayerController : MonoBehaviour {
 		} else {
 			statistics.holdUpDuration = 0f;
 		}
+
+		progress = achievements[0].Progress();
 	}
 
 	public void ScorePoint()
@@ -90,5 +97,18 @@ public class PlayerController : MonoBehaviour {
 	public void Reset(){
 		onFire = false;
 		currentScore = 0;
+	}
+
+	public void CreateAchievements()
+	{
+		Achievement HitBallAchievement = new Achievement("Hit Ball 10 Times", "Wow, you hit the ball ten times that's really cool buddy.");
+		HitBallAchievement.progress = HitBallAchievementProgress;
+
+		achievements.Add(HitBallAchievement);
+	}
+
+	public float HitBallAchievementProgress()
+	{
+		return (statistics.hitBallCount / 10f);
 	}
 }
