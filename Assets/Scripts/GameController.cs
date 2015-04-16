@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour {
 	private Rect windowRect;
 	private Rect achieveRectP1;
 	private Rect achieveRectP2;
+
 	public PlayerController player1, player2;
 
 

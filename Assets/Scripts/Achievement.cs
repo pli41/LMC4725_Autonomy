@@ -10,8 +10,8 @@ public class Achievement
 {
 	public string name;
 	public string description;
-	public int value;
-	public ProgressDelegate progress;
+	public int value;	// how many points the achievement is worth
+	public ProgressDelegate progress; // DELEGATE FUNCTION, MUST BE ASSIGNED IN EXTERNAL SCRIPT
 
 	public Achievement(string name, string description)
 	{
@@ -20,7 +20,6 @@ public class Achievement
 	}
 
 	// returns a value between 0f and 1f representing the percent completion of this achievement
-	// DELEGATE FUNCTION, MUST BE ASSIGNED IN EXTERNAL SCRIPT
 	public float Progress()
 	{
 		return progress();

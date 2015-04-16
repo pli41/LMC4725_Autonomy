@@ -56,10 +56,10 @@ public class PlayerController : MonoBehaviour {
 				}
 			}
 
-			statistics.holdDownDuration += Time.deltaTime;
+			statistics.holdUpDuration += Time.deltaTime;
 			CanHitBottomWall = true;
 		} else {
-			statistics.holdDownDuration = 0f;
+			statistics.holdUpDuration = 0f;
 		}
 
 		if(Input.GetKey(downKey)){
@@ -79,13 +79,13 @@ public class PlayerController : MonoBehaviour {
 				}
 			}
 
-			statistics.holdUpDuration += Time.deltaTime;
+			statistics.holdDownDuration += Time.deltaTime;
 			CanHitTopWall = true;
 		} else {
-			statistics.holdUpDuration = 0f;
+			statistics.holdDownDuration = 0f;
 		}
 
-		progress = achievements[0].Progress();
+		progress = achievements[1].Progress();
 	}
 
 	public void ScorePoint()
@@ -103,12 +103,20 @@ public class PlayerController : MonoBehaviour {
 	{
 		Achievement HitBallAchievement = new Achievement("Hit Ball 10 Times", "Wow, you hit the ball ten times that's really cool buddy.");
 		HitBallAchievement.progress = HitBallAchievementProgress;
-
 		achievements.Add(HitBallAchievement);
+
+		Achievement HoldUpAchievement = new Achievement("title", "description");
+		HoldUpAchievement.progress = HoldUpAchievementProgress;
+		achievements.Add(HoldUpAchievement);
 	}
 
 	public float HitBallAchievementProgress()
 	{
 		return (statistics.hitBallCount / 10f);
+	}
+
+	public float HoldUpAchievementProgress()
+	{
+		return (statistics.GetHoldUpDuration() / 20f);
 	}
 }
