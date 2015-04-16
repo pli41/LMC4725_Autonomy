@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour {
 	
 	private ArrayList balls;
 	private Rect windowRect;
+	private Rect achieveRectP1;
+	private Rect achieveRectP2;
 	public PlayerController player1, player2;
 
 
@@ -24,7 +26,9 @@ public class GameController : MonoBehaviour {
 		instance = this;
 
 		initialNewBallDuration = newBallDuration;
-		windowRect = new Rect (350, 150, 300, 200);
+		windowRect = new Rect (330, 150, 300, 200);
+		achieveRectP1 = new Rect (10, 410, 175, 80);
+		achieveRectP2 = new Rect (775, 410, 175, 80);
 		start = false;
 		winner = 0;
 		balls = new ArrayList ();
@@ -70,6 +74,8 @@ public class GameController : MonoBehaviour {
 	void OnGUI(){
 		if (winner == 0 && !start) {
 			GUI.Window(0, windowRect, DoMyWindow, "Pong Pong");
+			GUI.Window (2, achieveRectP1, AchieveWindowP1, "Achievement");
+			GUI.Window (3, achieveRectP2, AchieveWindowP2, "Achievement");
 		}
 		else if (winner != 0 && !start){
 			if(winner == 1){
@@ -100,9 +106,19 @@ public class GameController : MonoBehaviour {
 	}
 
 	void DoMyWindow(int windowID) {
-		GUI.Label (new Rect (25, 20, 250, 150), "Welcome to PongPong! The player who gets 30 points first wins the game. Use W&S for blue player and arrows for red player.");
-		if (GUI.Button (new Rect (100, 170, 100, 20), "Ready To Go"))
+		GUI.Label (new Rect (25, 20, 250, 150), "Welcome to Achievement Pong! Your goal is to get as many achievements as possible in two minutes. The player with the most achievements wins the game. The W and S keys control the blue paddle and the up and down arrow keys control the red paddle.");
+		if (GUI.Button (new Rect (100, 170, 100, 20), "Click To Start"))
 			start = true;
+		
+	}
+
+	void AchieveWindowP1(int windowID) {
+		GUI.Label (new Rect (10, 20, 140, 80), "This is an achievement\n500 Points");
+		
+	}
+
+	void AchieveWindowP2(int windowID) {
+		GUI.Label (new Rect (10, 20, 140, 80), "This is an achievement\n500 Points");
 		
 	}
 
