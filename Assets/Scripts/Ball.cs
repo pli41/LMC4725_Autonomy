@@ -84,6 +84,7 @@ public class Ball : MonoBehaviour {
 			{
 				dir = new Vector2(-1, y).normalized;
 			}
+
 			if(player.onFire){
 				GetComponent<Rigidbody2D>().velocity = dir * 8;
 				onFire = true;
@@ -91,6 +92,8 @@ public class Ball : MonoBehaviour {
 			else{
 				GetComponent<Rigidbody2D>().velocity = dir * speed;
 			}
+
+			player.statistics.hitBallCount++;
 
 			// Set Velocity with dir * speed
 			GetComponent<AudioSource>().Play();

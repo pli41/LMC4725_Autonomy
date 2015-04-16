@@ -649,6 +649,7 @@ GameObject:
   - 23: {fileID: 269548230}
   - 61: {fileID: 269548231}
   - 114: {fileID: 269548229}
+  - 114: {fileID: 269548234}
   m_Layer: 8
   m_Name: Player 1
   m_TagString: Player1
@@ -670,12 +671,12 @@ MonoBehaviour:
   playerNum: 1
   topLimit: {fileID: 976503468}
   botLimit: {fileID: 2391864}
+  fire: {fileID: 1894409133}
   onFire: 0
   currentScore: 0
-  scoreText: {fileID: 1978928571}
-  fire: {fileID: 1894409133}
   upKey: 119
   downKey: 115
+  statistics: {fileID: 269548234}
 --- !u!23 &269548230
 Renderer:
   m_ObjectHideFlags: 0
@@ -727,6 +728,26 @@ Transform:
   - {fileID: 1894409134}
   m_Father: {fileID: 1593758774}
   m_RootOrder: 2
+--- !u!114 &269548234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 269548228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872ecd6ee9645404d80958ad41291a19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 269548229}
+  hitBallCount: 0
+  hitLeftWallCount: 0
+  hitRightWallCount: 0
+  moveAmount: 0
+  moveUpAmount: 0
+  moveDownAmount: 0
+  holdUpDuration: 0
+  holdDownDuration: 0
 --- !u!1 &296185080
 GameObject:
   m_ObjectHideFlags: 0
@@ -7204,6 +7225,7 @@ GameObject:
   - 23: {fileID: 1864795457}
   - 61: {fileID: 1864795458}
   - 114: {fileID: 1864795461}
+  - 114: {fileID: 1864795462}
   m_Layer: 8
   m_Name: Player 2
   m_TagString: Player2
@@ -7276,12 +7298,32 @@ MonoBehaviour:
   playerNum: 2
   topLimit: {fileID: 976503468}
   botLimit: {fileID: 2391864}
+  fire: {fileID: 1931125335}
   onFire: 0
   currentScore: 0
-  scoreText: {fileID: 1426527437}
-  fire: {fileID: 1931125335}
   upKey: 273
   downKey: 274
+  statistics: {fileID: 1864795462}
+--- !u!114 &1864795462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1864795456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872ecd6ee9645404d80958ad41291a19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1864795461}
+  hitBallCount: 0
+  hitLeftWallCount: 0
+  hitRightWallCount: 0
+  moveAmount: 0
+  moveUpAmount: 0
+  moveDownAmount: 0
+  holdUpDuration: 0
+  holdDownDuration: 0
 --- !u!1 &1894409133
 GameObject:
   m_ObjectHideFlags: 0
