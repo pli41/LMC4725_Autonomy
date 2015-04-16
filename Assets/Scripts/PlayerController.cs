@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour {
 			statistics.holdDownDuration = 0f;
 		}
 		
-		progress = achievements[1].Progress();
+		progress = achievements[4].Progress();
 	}
 	
 	public void ScorePoint()
@@ -105,9 +105,21 @@ public class PlayerController : MonoBehaviour {
 		HitBallAchievement.progress = HitBallAchievementProgress;
 		achievements.Add(HitBallAchievement);
 		
-		Achievement HoldUpAchievement = new Achievement("title", "description");
+		Achievement HoldUpAchievement = new Achievement("Held up for 20 seconds", "Wow! You are a button holding expert.");
 		HoldUpAchievement.progress = HoldUpAchievementProgress;
 		achievements.Add(HoldUpAchievement);
+
+		Achievement WallHitAchievement = new Achievement("Hit the wall 60 times", "You're bouncing off the walls!");
+		WallHitAchievement.progress = WallHitAchievementProgress;
+		achievements.Add(WallHitAchievement);
+
+		Achievement MoverAchievement = new Achievement("You moved 1,500 paddle miles", "You could be a professional endurance paddle mover.");
+		MoverAchievement.progress = MoverAchievementProgress;
+		achievements.Add(MoverAchievement);
+
+		Achievement ThreePointerAchievement = new Achievement("You scored 3 Points", "Three pointers are supposed to be hard, but you make it look easy.");
+		ThreePointerAchievement.progress = ThreePointerAchievementProgress;
+		achievements.Add(ThreePointerAchievement);
 	}
 	
 	public float HitBallAchievementProgress()
@@ -118,5 +130,20 @@ public class PlayerController : MonoBehaviour {
 	public float HoldUpAchievementProgress()
 	{
 		return (statistics.GetHoldUpDuration() / 20f);
+	}
+
+	public float WallHitAchievementProgress()
+	{
+		return (((statistics.GetHitBottomWallCount())+(statistics.GetHitTopWallCount())) / 60f);
+	}
+
+	public float MoverAchievementProgress()
+	{
+		return (((statistics.GetMoveDownAmount())+(statistics.GetMoveUpAmount())) / 1500f);
+	}
+
+	public float ThreePointerAchievementProgress()
+	{
+		return (currentScore / 3f);
 	}
 }
