@@ -55,12 +55,12 @@ public class Statistics : MonoBehaviour {
 
 	public float GetHoldUpDuration()
 	{
-		return holdUpDuration;
+		return maxHoldUpDuration;
 	}
 
 	public float GetHoldDownDuration()
 	{
-		return holdDownDuration;
+		return maxHoldDownDuration;
 	}
 
 	public float GetHitBottomWallCount()
