@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 
 public delegate float ProgressDelegate();
@@ -12,6 +13,9 @@ public class Achievement
 	public string description;
 	public int value;
 	public ProgressDelegate progress;
+	public bool activeGUI;
+	public GameObject panel;
+
 
 	public Achievement(string name, string description)
 	{

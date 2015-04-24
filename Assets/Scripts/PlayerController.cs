@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 	public int playerNum;
 	public GameObject topLimit, botLimit;
-	
+
+	public GameObject mainPanel;
+	public GameObject achivPanel;
 	public GameObject fire;
 	public bool onFire;
-	
+
+
 	public int currentScore;
 	public GUIText scoreText;
 	
@@ -20,6 +24,7 @@ public class PlayerController : MonoBehaviour {
 	
 	public float progress;
 	
+	private int oldCount;
 	// Use this for initialization
 	void Start () {
 		Reset();
@@ -98,6 +103,7 @@ public class PlayerController : MonoBehaviour {
 					GameController.instance.DisplayAchievement2(achievement);
 				}
 				achievements.Remove (achievement);
+				Destroy(achievement.panel);
 				break;
 			}
 		}
@@ -113,7 +119,51 @@ public class PlayerController : MonoBehaviour {
 		onFire = false;
 		currentScore = 0;
 	}
-	
+
+	void OnGUI(){
+		// create and update achievement panels
+		for(int i = 0; i< achievements.Count; i++){
+			//arrange positions of the panels
+			if(oldCount != achievements.Count){
+				oldCount = achievements.Count;
+				resetPanels();
+			}
+
+			Achievement achievement = achievements[i];
+			if(achievement.panel == null){
+				achievement.panel = Instantiate(achivPanel);
+				achievement.panel.transform.parent = mainPanel.transform;
+				Vector3 currPos = achievement.panel.transform.position;
+				if(gameObject.tag == "Player1"){
+					currPos.Set(90f, (-60f*(float)i)+520f, 0f);
+				}
+				else{
+					currPos.Set(790f, (-60f*(float)i)+520f, 0f);
+				}
+
+				achievement.panel.transform.position = currPos;
+				i+=1;
+				achievement.activeGUI = true;
+			}
+
+
+			//change info of the panels
+			Text text = achievement.panel.transform.Find("desc").gameObject.GetComponent<Text>();
+			Slider slider = achievement.panel.transform.Find("Slider").gameObject.GetComponent<Slider>();
+			text.text = achievement.name;
+			slider.value = achievement.progress();
+		}
+		Debug.Log ("update Achievements");
+	}
+
+	void resetPanels(){
+		for (int i = 0; i< achievements.Count; i++) {
+			Achievement achievement = achievements[i];
+			Destroy(achievement.panel);
+		}
+	}
+
+
 	public void CreateAchievements()
 	{
 		Achievement HitBallAchievement = new Achievement("Hit Ball 10 Times", "Wow, you hit the ball ten times that's really cool buddy.");
@@ -135,6 +185,10 @@ public class PlayerController : MonoBehaviour {
 		Achievement ThreePointerAchievement = new Achievement("You scored 3 Points", "Three pointers are supposed to be hard, but you make it look easy.");
 		ThreePointerAchievement.progress = ThreePointerAchievementProgress;
 		achievements.Add(ThreePointerAchievement);
+
+
+
+		oldCount = achievements.Count;
 	}
 	
 	public float HitBallAchievementProgress()
