@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 
-public delegate float ProgressDelegate();
+public delegate float ProgressDelegate(float goal);
 
 
 public class Achievement 
@@ -12,22 +12,23 @@ public class Achievement
 	public string name;
 	public string description;
 	public int value;
-	public ProgressDelegate progress;
+	public float goal;
+	public ProgressDelegate progress;	// DELEGATE FUNCTION, MUST BE ASSIGNED IN EXTERNAL SCRIPT
 	public bool activeGUI;
 	public GameObject panel;
 
 
-	public Achievement(string name, string description)
+	public Achievement(string name, string description, float goal)
 	{
 		this.name = name;
 		this.description = description;
-	}
+		this.goal = goal;
+	}	
 
 	// returns a value between 0f and 1f representing the percent completion of this achievement
-	// DELEGATE FUNCTION, MUST BE ASSIGNED IN EXTERNAL SCRIPT
 	public float Progress()
 	{
-		return progress();
+		return progress(goal);
 	}
 
 	// returns a bool, true if achievement has been completed, false otherwise

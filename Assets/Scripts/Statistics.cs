@@ -6,8 +6,8 @@ public class Statistics : MonoBehaviour {
 	public int hitBallCount;
 	public int hitTopWallCount, hitBottomWallCount;
 	public float moveAmount, moveUpAmount, moveDownAmount;
-	public float holdUpDuration, holdDownDuration;
-	public float maxHoldUpDuration, maxHoldDownDuration;
+	public float holdUpDuration, holdDownDuration, noInputDuration;
+	public float maxHoldUpDuration, maxHoldDownDuration, maxNoInputDuration;
 
 
 	// Use this for initialization
@@ -25,6 +25,11 @@ public class Statistics : MonoBehaviour {
 		if (holdDownDuration > maxHoldDownDuration)
 		{
 			maxHoldDownDuration = holdDownDuration;
+		}
+
+		if (noInputDuration > maxNoInputDuration)
+		{
+			maxNoInputDuration = noInputDuration;
 		}
 	}
 
@@ -61,6 +66,16 @@ public class Statistics : MonoBehaviour {
 	public float GetHoldDownDuration()
 	{
 		return maxHoldDownDuration;
+	}
+
+	public float GetNoInputDuration()
+	{
+		return maxNoInputDuration;
+	}
+
+	public float GetHitWallCount()
+	{
+		return GetHitBottomWallCount() + GetHitTopWallCount();
 	}
 
 	public float GetHitBottomWallCount()

@@ -86,14 +86,14 @@ public class GameController : MonoBehaviour {
 			}
 			GUI.Window (1, windowRect, WinWindow, "Pong Pong");
 		} else {
-			Debug.Log("running");
-			if (displayAchievement1) {	
+			//Debug.Log("running");
+			/*if (displayAchievement1) {	
 				GUI.Window (2, achieveRectP1, AchieveWindowP1, achievement1.name);
 			}
 			//achievement1.name
 			if (displayAchievement2) {
 				GUI.Window (3, achieveRectP2, AchieveWindowP2, achievement2.name);
-			}
+			}*/
 		}
 	}
 
