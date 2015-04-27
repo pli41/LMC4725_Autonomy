@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
 
 
 	public int currentScore;
+	
 	public GUIText scoreText;
 	
 	public KeyCode upKey, downKey;
@@ -178,87 +179,108 @@ public class PlayerController : MonoBehaviour {
 	{
 		Achievement HitBall1Achievement = new Achievement("Hit Ball 10 Times", "Wow, you hit the ball ten times that's really cool buddy.", 10f);
 		HitBall1Achievement.progress = HitBallAchievementProgress;
+		HitBall1Achievement.value = 500;
 		achievements.Add(HitBall1Achievement);
 
 		
 		Achievement HoldUp1Achievement = new Achievement("Held up for 2 seconds", "Wow! You are a button holding expert.", 2f);
 		HoldUp1Achievement.progress = HoldUpAchievementProgress;
+		HoldUp1Achievement.value = 500;
 		achievements.Add(HoldUp1Achievement);
 
 		Achievement HoldDown1Achievement = new Achievement("Held down for 2 seconds", "Wow! You are a button holding expert.", 2f);
 		HoldDown1Achievement.progress = HoldDownAchievementProgress;
+		HoldDown1Achievement.value = 500;
 		achievements.Add(HoldDown1Achievement);
 
 		Achievement WallHit1Achievement = new Achievement("Hit the wall 5 times", "You're bouncing off the walls!", 5f);
 		WallHit1Achievement.progress = WallHitAchievementProgress;
+		WallHit1Achievement.value = 500;
 		achievements.Add(WallHit1Achievement);
 
 		Achievement Mover1Achievement = new Achievement("Move 100 paddle miles", "You could be a professional endurance paddle mover.", 100f);
 		Mover1Achievement.progress = MoverAchievementProgress;
+		Mover1Achievement.value = 500;
 		achievements.Add(Mover1Achievement);
 
 		Achievement Point1Achievement = new Achievement("Score 3 Points", "Three pointers are supposed to be hard, but you make it look easy.", 3f);
 		Point1Achievement.progress = PointAchievementProgress;
+		Point1Achievement.value = 500;
 		achievements.Add(Point1Achievement);
 
 		Achievement NoInput1Achievement = new Achievement("Don't move for 5 seconds", "How do you I play again?", 5f);
 		NoInput1Achievement.progress = NoInputAchievementProgress;
+		NoInput1Achievement.value = 500;
 		achievements.Add(NoInput1Achievement);
 
 		Achievement HitBall2Achievement = new Achievement("Hit Ball 30 Times", "Wow, you hit the ball ten times that's really cool buddy.", 30f);
 		HitBall2Achievement.progress = HitBallAchievementProgress;
+		HitBall2Achievement.value = 750;
 		achievements.Add(HitBall2Achievement);
 		
 		Achievement HoldUp2Achievement = new Achievement("Held up for 5 seconds", "Wow! You are a button holding expert.", 5f);
 		HoldUp2Achievement.progress = HoldUpAchievementProgress;
+		HoldUp2Achievement.value = 750;
 		achievements.Add(HoldUp2Achievement);
 		
 		Achievement HoldDown2Achievement = new Achievement("Held down for 5 seconds", "Wow! You are a button holding expert.", 5f);
 		HoldDown2Achievement.progress = HoldDownAchievementProgress;
+		HoldDown2Achievement.value = 750;
 		achievements.Add(HoldDown2Achievement);
 		
 		Achievement WallHit2Achievement = new Achievement("Hit the wall 10 times", "You're bouncing off the walls!", 10f);
 		WallHit2Achievement.progress = WallHitAchievementProgress;
+		WallHit2Achievement.value = 750;
 		achievements.Add(WallHit2Achievement);
 		
 		Achievement Mover2Achievement = new Achievement("Move 500 paddle miles", "You could be a professional endurance paddle mover.", 500f);
 		Mover2Achievement.progress = MoverAchievementProgress;
+		Mover2Achievement.value = 750;
 		achievements.Add(Mover2Achievement);
 		
 		Achievement Point2Achievement = new Achievement("Score 10 Points", "Three pointers are supposed to be hard, but you make it look easy.", 10);
 		Point2Achievement.progress = PointAchievementProgress;
+		Point2Achievement.value = 750;
 		achievements.Add(Point2Achievement);
 		
 		Achievement NoInput2Achievement = new Achievement("Don't move for 10 seconds", "No, seriously, what am I doing?", 10f);
 		NoInput2Achievement.progress = NoInputAchievementProgress;
+		NoInput2Achievement.value = 750;
 		achievements.Add(NoInput2Achievement);
 
 		Achievement HitBall3Achievement = new Achievement("Hit Ball 60 Times", "Wow, you hit the ball ten times that's really cool buddy.", 60f);
 		HitBall3Achievement.progress = HitBallAchievementProgress;
+		HitBall3Achievement.value = 1000;
 		achievements.Add(HitBall3Achievement);
 		
 		Achievement HoldUp3Achievement = new Achievement("Held up for 10 seconds", "Wow! You are a button holding expert.", 10f);
 		HoldUp3Achievement.progress = HoldUpAchievementProgress;
+		HoldUp3Achievement.value = 1000;
 		achievements.Add(HoldUp3Achievement);
 		
 		Achievement HoldDown3Achievement = new Achievement("Held down for 10 seconds", "Wow! You are a button holding expert.", 10f);
 		HoldDown3Achievement.progress = HoldDownAchievementProgress;
+		HoldDown3Achievement.value = 1000;
 		achievements.Add(HoldDown3Achievement);
 		
 		Achievement WallHit3Achievement = new Achievement("Hit the wall 25 times", "You're bouncing off the walls!", 25f);
 		WallHit3Achievement.progress = WallHitAchievementProgress;
+		WallHit3Achievement.value = 1000;
 		achievements.Add(WallHit3Achievement);
 		
 		Achievement Mover3Achievement = new Achievement("Move 1000 paddle miles", "You could be a professional endurance paddle mover.", 1000f);
 		Mover3Achievement.progress = MoverAchievementProgress;
+		Mover3Achievement.value = 1000;
 		achievements.Add(Mover3Achievement);
 		
 		Achievement Point3Achievement = new Achievement("Score 20 Points", "Three pointers are supposed to be hard, but you make it look easy.", 20);
 		Point3Achievement.progress = PointAchievementProgress;
+		Point3Achievement.value = 1000;
 		achievements.Add(Point3Achievement);
 
 		Achievement NoInput3Achievement = new Achievement("Don't move for 20 seconds", "No, seriously, what am I doing?", 20f);
 		NoInput3Achievement.progress = NoInputAchievementProgress;
+		NoInput3Achievement.value = 1000;
 		achievements.Add(NoInput3Achievement);
 
 
