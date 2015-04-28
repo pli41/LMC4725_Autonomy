@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
 
 
 	public int currentScore;
+	public int achievementScore;
 	
 	public GUIText scoreText;
 	
@@ -114,6 +115,7 @@ public class PlayerController : MonoBehaviour {
 					GameController.instance.DisplayAchievement2(achievement);
 				}
 				achievements.Remove (achievement);
+				achievementScore += achievement.value;
 				Destroy(achievement.panel);
 				break;
 			}
